@@ -1,0 +1,338 @@
+
+//ex1//
+CREATE DATABASE php611;
+
+//ex2//
+CREATE TABLE address(
+        id int PRIMARY KEY AUTO_INCREMENT,
+        loation varchar (255) NOT NULL
+)
+//ex3//
+CREATE TABLE students(
+        id int PRIMARY KEY AUTO_INCREMENT,
+        name varchar (255) NOT NULL,
+         age int NOT NULL,
+        email varchar (255) NOT NULL,
+     a_id int NOT NULL,
+)
+
+//ex4//
+CREATE TABLE students(
+        id int PRIMARY KEY AUTO_INCREMENT,
+        name varchar (255) NOT NULL,
+         age int NOT NULL,
+        email varchar (255) NOT NULL,
+     a_id int NOT NULL,
+    FOREIGN KEY ( a_id) REFERENCES address (id)
+         
+
+)
+//ex5//
+
+INSERT INTO address(location) 
+VALUES ('Gulshan1'),('badda'),('Banani'),('motijheel');
+
+
+//ex6//
+SELECT* FROM students;
+
+//ex7//
+
+SELECT* FROM students
+WHERE id = 2;
+
+
+//ex8//
+
+SELECT* FROM students
+WHERE age = 40;
+
+
+//ex9//
+
+SELECT* FROM students
+WHERE name = "munni";
+
+
+//ex10//
+
+SELECT name, age, id
+FROM students WHERE name = "munni";
+
+//ex11//
+
+UPDATE students SET 
+name = 'zerin', email="ze@gmail.com" 
+WHERE id = 3;
+
+//ex12//
+DELETE FROM students 
+WHERE id = 2;
+
+//ex13//
+
+
+SELECT * FROM students,address  
+WHERE address.id=students.a_id;
+
+
+
+//ex14//
+
+
+SELECT students.name, students.age, students.email, address.location
+FROM students,address WHERE address.id=students.a_id;
+
+
+
+//ex15//
+
+
+SELECT * FROM `students` 
+WHERE name="Munni" AND age="20";
+
+
+
+//ex16//
+
+
+SELECT * FROM `students` 
+WHERE name="Munni" OR age="20";
+
+
+
+//ex17//
+
+
+SELECT * FROM students
+WHERE NOT age = "40";
+
+
+
+//ex18//
+
+
+SELECT * FROM students
+ORDER BY location ;
+
+
+
+//ex19//
+
+
+SELECT * FROM students 
+WHERE name LIKE"a%";
+
+
+
+
+//ex20//
+
+
+SELECT * FROM students 
+WHERE name LIKE"%a%";
+
+
+
+//ex21//
+
+
+SELECT * FROM students
+ORDER BY age ;
+
+
+
+//ex22//
+
+
+
+SELECT * FROM students
+ORDER BY age DESC;
+
+
+//ex23//
+
+
+SELECT *FROM students
+LIMIT 3;
+
+
+
+//ex24//
+
+SELECT * FROM students
+ORDER BY age DESC LIMIT 3;
+
+
+
+
+//ex25//
+
+
+SELECT * FROM students
+WHERE a_id='4'LIMIT 3;
+
+
+//ex26//
+
+SELECT Name,Address
+FROM studenys WHERE Address IS NULL;
+
+
+//ex27//
+
+
+UPDATE students SET Name = 'Alfred Schmidt', 
+WHERE id = 1;
+
+//ex28//
+
+DELETE FROM students WHERE name='Alfreds Futterkiste';
+
+
+//ex29//
+
+SELECT COUNT(a_id)
+FROM location;
+
+
+//ex30//
+
+SELECT * FROM students
+WHERE location LIKE 'bana%';
+
+
+//ex31//
+
+SELECT * FROM students
+WHERE location IN ('Gulshan', 'badda', 'banani');
+
+
+//ex32//
+
+SELECT * FROM students
+WHERE location NOT IN('Gulshan', 'badda', 'banani');
+
+
+//ex33//
+
+SELECT * FROM students
+WHERE age BETWEEN 10 AND 20;
+
+
+//ex34//
+
+SELECT * FROM students
+WHERE age NOT BETWEEN 10 AND 20;
+
+
+//ex35//
+
+SELECT location FROM students
+UNION
+SELECT location FROM name
+ORDER BY age;
+
+
+//ex36//
+
+SELECT location FROM students
+UNION ALL
+SELECT location FROM name
+ORDER BY age;
+
+
+//ex37//
+
+SELECT COUNT(ID), location
+FROM students
+GROUP BY location;
+
+
+
+//ex38//
+
+SELECT COUNT(ID), location
+FROM students
+GROUP BY location;
+ORDER BY COUNT(ID) DESC;
+
+//ex39//
+
+SELECT COUNT(ID), location
+FROM students
+GROUP BY location
+HAVING COUNT(ID) > 5;
+
+
+
+//ex40//
+
+SELECT COUNT(ID), location
+FROM students
+GROUP BY location
+HAVING COUNT(ID) > 5;
+ORDER BY COUNT(ID) DESC;
+
+//ex41//
+
+SELECT Name
+FROM  students
+WHERE ID = ANY
+  (SELECT ID
+  FROM a_id
+  WHERE age= 10);
+
+
+//ex42//
+
+
+INSERT INTO students (Name, location)
+SELECT age, email, a_id FROM students;
+
+//ex43//
+
+INSERT INTO students (Name, location)
+SELECT age, email, a_id FROM students;
+WHERE location='Gulshan'
+
+//ex44//
+
+
+SELECT * FROM students
+WHERE location= 'Gulshan' AND age= '10';
+
+//ex45//
+
+SELECT * FROM Customers
+WHERE NOT location= 'Gulshan';
+
+
+//ex46//
+
+
+SELECT location FROM students;
+
+//ex47//
+
+SELECT * FROM students
+WHERE location = 'Gulshan';
+
+
+//ex48//
+
+SELECT * FROM students
+WHERE ID = 1;
+
+
+//ex49//
+
+
+SELECT * FROM students
+LIMIT 3 OFFSET 3;
+
+//ex50//
+
+
+SELECT * FROM students
+WHERE location LIKE 'b_n_ni';
